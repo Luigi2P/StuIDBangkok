@@ -3,6 +3,7 @@
 import { MiniKit, ResponseEvent, MiniAppSendTransactionPayload } from "@worldcoin/minikit-js";
 import { useWaitForTransactionReceipt } from "@worldcoin/minikit-react";
 import { createPublicClient, http } from 'viem'
+import { worldchain } from 'viem/chains'
 import { useEffect, useState } from "react";
 
 const [transactionId, setTransactionId] = useState<string>('')
@@ -13,8 +14,8 @@ const sendTransactionCommand = () => {
     // Transfers can also be at most 1 hour in the future.
     const permitTransfer = {
         permitted: {
-            token: testTokens.worldchain.USDCE,
-            amount: '10000',
+            token: "ScoinToken",
+            amount: '1',
         },
         nonce: Date.now().toString(),
         deadline,
@@ -28,7 +29,7 @@ const sendTransactionCommand = () => {
 
     const transferDetails = {
         to: '0x126f7998Eb44Dd2d097A8AB2eBcb28dEA1646AC8',
-        requestedAmount: '10000',
+        requestedAmount: '1',
     }
 
     const transferDetailsArgsForm = [transferDetails.to, transferDetails.requestedAmount]
