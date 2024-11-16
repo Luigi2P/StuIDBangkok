@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@safe-global/protocol-kit": "^5.0.4",
-    "@worldcoin/minikit-js": "1.1.1",
+    "@worldcoin/minikit-js": "1.2.0",
     "@worldcoin/minikit-react": "^1.2.0",
     "eruda": "^3.2.3",
     "next": "14.2.6",
