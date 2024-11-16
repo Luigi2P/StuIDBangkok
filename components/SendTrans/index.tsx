@@ -52,21 +52,20 @@ const sendTransactionCommand = () => {
     })
 }
 
-const client = createPublicClient({
-    chain: worldchain,
-    transport: http('https://worldchain-mainnet.g.alchemy.com/public'),
-})
-
-const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({
-    client: client,
-    appConfig: {
-      app_id: '<app_id>',
-    },
-    transactionId: transactionId,
-  })
-  
-
 export const SendTransBlock = () => {
+    const client = createPublicClient({
+        chain: worldchain,
+        transport: http('https://worldchain-mainnet.g.alchemy.com/public'),
+    })
+    
+    const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({
+        client: client,
+        appConfig: {
+          app_id: '<app_id>',
+        },
+        transactionId: transactionId,
+      })
+      
     useEffect(() => {
         if (!MiniKit.isInstalled()) {
           return
