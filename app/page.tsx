@@ -4,7 +4,7 @@ import { SignIn } from "@/components/SignIn";
 import { VerifyBlock } from "@/components/Verify";
 import { SignMessageBlock } from "@/components/SignMessage";
 import { SendTransBlock } from "@/components/SendTrans";
-import Sidebar from "@/components/Sidebar";
+import Sidebar from "@/components/sidebar";
 
 export default function Home() {
   return (
