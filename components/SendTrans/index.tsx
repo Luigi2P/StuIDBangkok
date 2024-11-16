@@ -93,6 +93,7 @@ export const SendTransBlock = () => {
             console.error('Error sending transaction', payload)
           } else {
             setTransactionId(payload.transaction_id)
+            console.log(payload)
           }
         })
       
