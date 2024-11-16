@@ -30,7 +30,7 @@ export default function Sidebar() {
       <nav className="flex-grow">
         <ul className="mt-4">
           <li className="mb-4">
-            <Link href="/MainPage" className="flex items-center px-4 py-2 hover:bg-gray-700">
+            <Link href="/" className="flex items-center px-4 py-2 hover:bg-gray-700">
               <FiHome size={20} />
               {!isCollapsed && <span className="ml-2">Main</span>}
             </Link>
