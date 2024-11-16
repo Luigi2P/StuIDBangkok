@@ -4,13 +4,12 @@ import { SignIn } from "@/components/SignIn";
 import { VerifyBlock } from "@/components/Verify";
 import { SignMessageBlock } from "@/components/SignMessage";
 import { SendTransBlock } from "@/components/SendTrans";
-import Sidebar from "@/components/sidebar";
+import Layout from "@/components/Layout";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen">
-      <Sidebar />
-      <main className="flex flex-col flex-grow p-24 gap-y-3">
+    <Layout>
+      <div className="grid grid-cols-1 gap-4">
         <div id="sign-in">
           <SignIn />
         </div>
@@ -26,7 +25,7 @@ export default function Home() {
         <div id="send-transaction">
           <SendTransBlock />
         </div>
-      </main>
-    </div>
+      </div>
+    </Layout>
   );
 }
