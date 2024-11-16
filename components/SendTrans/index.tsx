@@ -6,8 +6,6 @@ import { createPublicClient, http } from 'viem'
 import { worldchain } from 'viem/chains'
 import { useEffect, useState } from "react";
 
-const [transactionId, setTransactionId] = useState<string>('')
-
 const sendTransactionCommand = () => {
     const deadline = Math.floor((Date.now() + 30 * 60 * 1000) / 1000).toString()
 
@@ -53,6 +51,7 @@ const sendTransactionCommand = () => {
 }
 
 export const SendTransBlock = () => {
+    const [transactionId, setTransactionId] = useState<string>('')
     const client = createPublicClient({
         chain: worldchain,
         transport: http('https://worldchain-mainnet.g.alchemy.com/public'),
