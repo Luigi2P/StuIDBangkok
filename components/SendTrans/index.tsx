@@ -56,7 +56,7 @@ export const SendTransBlock = () => {
     const client = createPublicClient({
         chain: worldchain,
         transport: http('https://worldchain-mainnet.g.alchemy.com/public'),
-    })
+    }) as any
     
     const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({
         client: client,
