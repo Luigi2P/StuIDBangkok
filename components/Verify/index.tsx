@@ -64,9 +64,19 @@ export const VerifyBlock = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
       <h1>Verify Block</h1>
-      <button className="bg-green-500 p-4" onClick={triggerVerify}>
+      <button
+        className="bg-green-500 p-4"
+        style={{
+          color: 'white',
+          padding: '10px 20px',
+          border: 'none',
+          borderRadius: '5px',
+          marginTop: '10px'
+        }}
+        onClick={triggerVerify}
+      >
         Test Verify
       </button>
     </div>
