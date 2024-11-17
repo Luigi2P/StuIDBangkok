@@ -2,10 +2,11 @@
 import { MiniKit, SignMessageInput, ResponseEvent, MiniAppSignMessagePayload } from '@worldcoin/minikit-js'
 import { useEffect, useState } from "react";
 import Safe, { hashSafeMessage } from "@safe-global/protocol-kit";
-
+import { QRCodeSVG } from 'qrcode.react';
 
 export const SignMessageBlock = () => {
     const [message, setMessage] = useState("Hello world");
+    const [qrData, setQrData] = useState<string>("");
 
     const onSignMessage = () => {
         if (!MiniKit.isInstalled()) {
@@ -36,9 +37,14 @@ export const SignMessageBlock = () => {
                 })
             ).isValidSignature(messageHash, payload.signature);
 
-            // Checks functionally if the signature is correct
             if (isValid) {
                 console.log("Signature is valid");
+                const qrString = [
+                    `Address: ${payload.address}`,
+                    `Signature: ${payload.signature}`,
+                    `Message Hash: ${messageHash}`
+                ].join('\n');
+                setQrData(qrString);
             } else {
                 console.log("Signature is invalid");
             }
@@ -47,7 +53,7 @@ export const SignMessageBlock = () => {
         return () => {
             MiniKit.unsubscribe(ResponseEvent.MiniAppSignMessage);
         };
-    }, [message]); // Add message to dependency array
+    }, [message]);
 
     return (
         <div className="flex flex-col gap-4">
@@ -61,6 +67,11 @@ export const SignMessageBlock = () => {
             <button className="bg-blue-500 p-4 text-white rounded" onClick={onSignMessage}>
                 Sign Message
             </button>
+            {qrData && (
+                <div className="mt-4">
+                    <QRCodeSVG value={qrData} size={256} />
+                </div>
+            )}
         </div>
     );
 };
