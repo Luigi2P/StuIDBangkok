@@ -10,7 +10,7 @@ export const SendTransBlock = () => {
 
     const sendTransactionCommand = async () => {
         // const deadline = Math.floor((Date.now() + 30 * 60 * 1000) / 1000).toString()
-    
+
         // // Transfers can also be at most 1 hour in the future.
         // const permitTransfer = {
         //     permitted: {
@@ -20,20 +20,20 @@ export const SendTransBlock = () => {
         //     nonce: Date.now().toString(),
         //     deadline,
         // }
-    
+
         // const permitTransferArgsForm = [
         //     [permitTransfer.permitted.token, permitTransfer.permitted.amount],
         //     permitTransfer.nonce,
         //     permitTransfer.deadline,
         // ]
-    
+
         // const transferDetails = {
         //     to: '0x126f7998Eb44Dd2d097A8AB2eBcb28dEA1646AC8',
         //     requestedAmount: '1',
         // }
-    
+
         // const transferDetailsArgsForm = [transferDetails.to, transferDetails.requestedAmount]
-    
+
         const { commandPayload, finalPayload } = await MiniKit.commandsAsync.sendTransaction({
             transaction: [
                 {
@@ -41,18 +41,18 @@ export const SendTransBlock = () => {
                     abi: [
                         {
                             "inputs": [
-                              {
-                                "internalType": "int256",
-                                "name": "_newInt",
-                                "type": "int256"
-                              }
+                                {
+                                    "internalType": "int256",
+                                    "name": "_newInt",
+                                    "type": "int256"
+                                }
                             ],
                             "name": "setInt",
                             "outputs": [],
                             "stateMutability": "nonpayable",
                             "type": "function"
-                          },
-                      ],
+                        },
+                    ],
                     functionName: 'setInt',
                     args: [5],
                 },
@@ -63,7 +63,7 @@ export const SendTransBlock = () => {
             //         spender: '0x34afd47fbdcc37344d1eb6a2ed53b253d4392a2f',
             //     },
             // ],
-            
+
         })
         console.log(commandPayload, finalPayload)
     }
@@ -74,37 +74,52 @@ export const SendTransBlock = () => {
         chain: worldchain,
         transport: http('https://worldchain-mainnet.g.alchemy.com/public'),
     }) as any
-    
+
     const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({
         client: client,
         appConfig: {
-          app_id: 'app_f2c54730bd29866f2e26ff0799a56a82',
+            app_id: 'app_f2c54730bd29866f2e26ff0799a56a82',
         },
         transactionId: transactionId,
-      })
-      
+    })
+
     useEffect(() => {
         if (!MiniKit.isInstalled()) {
-          return
+            return
         }
-      
-        MiniKit.subscribe(ResponseEvent.MiniAppSendTransaction, async (payload: MiniAppSendTransactionPayload) => {
-          if (payload.status === 'error') {
-            console.error('Error sending transaction', payload)
-          } else {
-            setTransactionId(payload.transaction_id)
-            console.log(payload)
-          }
-        })
-      
-        return () => {
-          MiniKit.unsubscribe(ResponseEvent.MiniAppSendTransaction)
-        }
-      }, [])
 
-      return (
-        <button className="bg-blue-500 p-4" onClick={sendTransactionCommand}>
-          SendTrans
-        </button>
-      );
+        MiniKit.subscribe(ResponseEvent.MiniAppSendTransaction, async (payload: MiniAppSendTransactionPayload) => {
+            if (payload.status === 'error') {
+                console.error('Error sending transaction', payload)
+            } else {
+                setTransactionId(payload.transaction_id)
+                console.log(payload)
+            }
+        })
+
+        return () => {
+            MiniKit.unsubscribe(ResponseEvent.MiniAppSendTransaction)
+        }
+    }, [])
+
+    return (
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ margin: '30px 0 10px 0', fontSize: '16px', fontWeight: 'bold' }}>
+                Check if you are a student
+            </div>
+            <button
+                onClick={() => sendTransactionCommand()}
+                style={{
+                    backgroundColor: '#4CAF50',
+                    color: 'white',
+                    padding: '10px 20px',
+                    border: 'none',
+                    borderRadius: '5px',
+                    marginTop: '10px'
+                }}
+            >
+                Check!
+            </button>
+        </div>
+    );
 };
