@@ -1,5 +1,5 @@
 # (What We Hoped to Create) Digital Student ID Based on World
-
+![Structure](/imgs/structure.png)
 ## Background  
 Xiao Ming, a university student, loves coding—especially with the help of GitHub Copilot. However, his family isn't well-off, so he applied for GitHub's student benefits.  
 His journey was far from smooth. Not only did he have to spend considerable time and effort obtaining proof of enrollment, but he also anxiously awaited approval from the staff.  
@@ -34,3 +34,29 @@ Determined to change things, he eventually stumbled upon WorldCoin and their Min
 - Front-end development  
 - Maintaining a positive mindset  
 - Stress management
+
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="imgs/check.jpg" width = "65%" alt=""/>
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">
+      It seems that the authentication function has been implemented.
+  	</div>
+</center>
+
+<center>
+    <img style="border-radius: 0.3125em;
+    box-shadow: 0 2px 4px 0 rgba(34,36,38,.12),0 2px 10px 0 rgba(34,36,38,.08);" 
+    src="imgs/sign.jpg" width = "65%" alt=""/>
+    <br>
+    <div style="color:orange; border-bottom: 1px solid #d9d9d9;
+    display: inline-block;
+    color: #999;
+    padding: 2px;">
+      Signature: One of the few potentially meaningful features.
+  	</div>
+</center>
