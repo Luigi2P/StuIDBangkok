@@ -69,8 +69,14 @@ export const PayBlock = () => {
   }, []);
 
   return (
-    <button className="bg-blue-500 p-4" onClick={sendPayment}>
-      Pay
-    </button>
+    <div className="flex flex-col items-center gap-4 w-full max-w-md">
+      <h1 className="text-2xl font-bold mb-4">Make Payment</h1>
+      <button
+        className="w-full bg-blue-500 text-white p-4 rounded-lg"
+        onClick={sendPayment}
+      >
+        Pay 0.05 WLD
+      </button>
+    </div>
   );
 };
